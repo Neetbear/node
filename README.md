@@ -1,2 +1,2 @@
-# node
-node test api server with MVC pattern
+# Node.js
+test api server with MVC pattern
