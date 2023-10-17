@@ -1,5 +1,4 @@
-const sequelize = require('../config/sequelize')
-const {User, ChatRoom, ChatRoomJoin, Chat } = require('./sequelize.schema')
+const sequelize = require('../../config/sequelize')
 const { buildSchema } = require("graphql")
 
 // GraphQL 스키마 정의
@@ -31,7 +30,7 @@ const chatDefs = buildSchema(`
         senderId: Int!
         roomId: Int!
         message: String!
-        messageType: [MessageType]
+        messageType: [MessageType]!
     }
 
     type Query {
@@ -71,24 +70,4 @@ const chatRoomJoinDefs = buildSchema(`
 
 module.exports = {
     userDefs, chatDefs, chatRoomDefs, chatRoomJoinDefs
-}
-
-const userResolvers = {
-    Query : {
-        getAllUser: async () => {
-            const users = await User.findAll();
-
-            return users;
-        },
-        getUserById: async (id) => {
-            const id = id;
-            const user = await User.findOne({
-                where: {
-                    id
-                }
-            });
-
-            return user;
-        }
-    }
 }
