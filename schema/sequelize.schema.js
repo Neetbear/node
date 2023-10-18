@@ -1,83 +1,101 @@
-const sequelize = require('../../config/sequelize')
+const sequelize = require('../config/sequelize')
 const { DataTypes } = require('sequelize');
 
 // Sequelize 모델 정의
 const User = sequelize.define('user', {
-    Id : {
+    id : {
         type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
     },
-    Name : {
+    name : {
         type: DataTypes.STRING,
         allowNull: false,
+    },
+    password : {
+        type: DataTypes.STRING,
+        allowNull: false
     }
 })
 
 const ChatRoom = sequelize.define('chat_room', {
-    Id : {
+    id : {
         type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
     },
-    MasterId : {
+    masterId : {
         type: DataTypes.BIGINT,
         allowNull: false,
     },
-    Name : {
+    name : {
         type: DataTypes.STRING,
         allowNull: false,
     }
 })
 
 const ChatRoomJoin = sequelize.define('chat_room_join', {
-    Id : {
+    id : {
         type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
     },
-    UserId : {
+    userId : {
         type: DataTypes.BIGINT,
         allowNull: false,
     },
-    ChatId : {
+    chatId : {
         type: DataTypes.BIGINT,
         allowNull: false,
     },
 })
 
 const Chat = sequelize.define('chat', {
-    Id :{
+    id :{
         type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
     },
-    SenderId : {
+    senderId : {
         type: DataTypes.BIGINT,
         allowNull: false,
     },
-    RoomId : {
+    roomId : {
         type: DataTypes.BIGINT,
         allowNull: false,
     },
-    Message : {
+    message : {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    MessageType : {
+    messageType : {
         type: DataTypes.ENUM('chatting', 'reply','system'),
         defaultValue : 'chatting',
         allowNull: false,
-    },
+    }, 
+}
+// , {
+//     timestamps: false, // 생성일과 수정일을 사용하지 않도록 설정
+// }
+)
+
+sequelize
+    .sync({force: true})
+    .then(() => {
+        console.log('Database synchronized');
 })
+    .catch((err) => {
+        console.log('Database synchronize failed:', err);
+});
 
 module.exports = {
     User,
     ChatRoom,
     ChatRoomJoin,
     Chat,
+    sequelize
 };

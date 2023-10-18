@@ -1,4 +1,4 @@
-const sequelize = require('../../config/sequelize')
+const sequelize = require('../config/sequelize')
 const { buildSchema } = require("graphql")
 
 // GraphQL 스키마 정의
@@ -6,12 +6,13 @@ const userDefs = buildSchema(`
     type User {
         id: ID!
         name: String
-        email: String
+        password: String
     }
 
     type Query {
         getAllUser: [User]
         getUserById(id: ID!): User
+        getUserByName(name: string): User
     }
 
     type Mutatus {

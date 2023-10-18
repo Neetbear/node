@@ -16,6 +16,16 @@ const userResolvers = {
             });
 
             return user;
+        },
+        getUserByName: async (name) => {
+            const name = name;
+            const user = await User.findOne({
+                where: {
+                    name: name,
+                }
+            });
+
+            return user;
         }
     }
 }
