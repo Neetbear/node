@@ -15,7 +15,7 @@ const userDefs = buildSchema(`
         getUserByName(name: string): User
     }
 
-    type Mutatus {
+    type Mutation {
     }
 `)
 
@@ -37,7 +37,7 @@ const chatDefs = buildSchema(`
     type Query {
     }
 
-    type Mutatus {
+    type Mutation {
     }
 `)
 
@@ -51,7 +51,7 @@ const chatRoomDefs = buildSchema(`
     type Query {
     }
 
-    type Mutatus {
+    type Mutation {
     }
 `)
 
@@ -65,7 +65,7 @@ const chatRoomJoinDefs = buildSchema(`
     type Query {
     }
 
-    type Mutatus {
+    type Mutation {
     }
 `)
 

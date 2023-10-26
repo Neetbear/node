@@ -1,2 +1,5 @@
-const {User, ChatRoom, ChatRoomJoin, Chat } = require('./sequelize.schema')
+const {UserRepository} = require('./user')
 
+module.exports = {
+    Repository:{UserRepository}
+};

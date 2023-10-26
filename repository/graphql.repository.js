@@ -27,21 +27,47 @@ const userResolvers = {
 
             return user;
         }
+    },
+    Mutation: {   
+        createUser: async () => {
+            
+        },
+        updateUser: async () => {},
+        disabledUser: async () => {},
+        deleteUser: async () => {}
     }
 }
 
 const chatResolvers = {
     Query : {
+    },
+    Mutation: {
+        createChat: async () => {},
+        updateChat: async () => {},
+        disabledChat: async () => {},
+        deleteChat: async () => {}
     }
 }
 
 const chatRoomResolvers = {
     Query : {
+    },
+    Mutation: {   
+        createChatRoom: async () => {},
+        updateChatRoom: async () => {},
+        disabledChatRoom: async () => {},
+        deleteChatRoom: async () => {}
     }
 }
 
 const chatRoomJoinResolvers = {
     Query : {
+    },
+    Mutation: {   
+        createChatRoomJoin: async () => {},
+        updateChatRoomJoin: async () => {},
+        disabledChatRoomJoin: async () => {},
+        deleteChatRoomJoin: async () => {}
     }
 }
 
